@@ -1,0 +1,533 @@
+/* VAR */
+:root {
+    --my-message:#d5f9ba;
+    --l-grey:#eaeaea;
+    --b-write:#f3eeea;
+    --b-noti:#8edafc;
+    --icon:#b1b1b1;
+    --text:#cfcdd8;
+    --last-access:#bbbac2;
+    --desk-bcol-up:#009688;
+    --desk-bcol-down:#dcdbd2;
+    --border-cont:#d7d7d7;
+}
+
+
+/* RESET */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+
+/* SCROLLBAR CUSTOM */
+.list-scroll::-webkit-scrollbar {
+    width: 3px;
+}
+
+.list-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+ 
+.list-scroll::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.list-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* COMMON */
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.list-scroll {
+    overflow-y: auto;
+}
+
+.profile-pic {
+    height: 60px;
+    width: 60px;
+}
+
+.profile-pic img {
+    border-radius: 50%;
+}
+
+li {
+    list-style-type: none;
+}
+
+.container {
+    height: 80px;
+    padding: 10px;
+}
+
+.contact-list .container {
+    border-right: 1px solid var(--border-cont);
+    border-bottom: 1px solid var(--border-cont);
+}
+
+/* MEDIA QUERY BORDER CONTAINER */
+@media screen and (min-width: 540px) {
+    .left .container {
+        border-right: 1px solid var(--border-cont);
+        border-bottom: 1px solid var(--border-cont);
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .left .container {
+        border-right: 1px solid var(--border-cont);
+        border-bottom: 0;
+    }
+}
+
+
+/* WEB APP VIEWPORT */
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+@media screen and (min-width: 991px) {
+    .up-wrapper {
+        background: linear-gradient(
+            var(--desk-bcol-up) 0%,
+            var(--desk-bcol-up) 20%,
+            var(--desk-bcol-down) 20%
+        );
+        height: 100vh;
+        width: 100%;
+    }
+
+    .flex-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wrapper {
+        width: 90%;
+        height: 90vh;
+        background-color: white;
+    }
+}
+
+
+/* LEFT SECTION */
+.container-left {
+    display: none;
+}
+
+/* USER */
+.user {
+    background-color:var(--b-write);
+}
+
+.profile-nav {
+    display: none;
+    align-items: center;
+    justify-content: flex-end;
+    width: calc(100% - 60px);
+    height: 100%;
+}
+
+.profile-nav button {
+    scale: 1.7;
+    padding: 3px;
+    color: var(--icon);
+    text-decoration: none;
+    margin: 15px;
+    border: transparent;
+}
+
+.profile-nav button:active {
+    opacity: .5;
+}
+
+
+/* NOTIFICATION */
+.notification {
+    display: none;
+    background-color: var(--b-noti);
+}
+
+.container-big {
+    height: 90px;
+    padding: 10px;
+}
+
+.silence-pic {
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 70px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.silence-pic i {
+    scale: 2;
+    text-decoration: none;
+    color: var(--b-noti);
+}
+
+.news-container {
+    width: calc(100% - 70px);
+    height: 100%;
+    padding: 5px 10px;
+}
+
+.news-container h3 {
+    font-size: 1rem;
+}
+
+.news-container a {
+    color: rgb(132, 132, 132);
+}
+
+/* SEARCH */
+.search {
+    display: none;
+}
+
+.container-small {
+    height: 60px;
+    padding: 10px;
+    background-color: var(--b-write);
+}
+
+.search-icon {
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(255, 255, 255);
+}
+
+.search-icon a {
+    text-decoration: none;
+    color: var(--icon);
+}
+
+.search label {
+    display: none;
+}
+
+.searcher {
+    width: calc(100% - 40px);
+    height: 100%;
+    padding: 10px;
+    border: 0;
+}
+
+/* CONTACT LIST */
+.contact-list {
+    height: calc(100vh - 80px);
+}
+
+.contact-list li:hover {
+    background-color: #eaeaeaca;
+}
+
+.info-contact {
+    display: none;
+    justify-content: space-between;
+    width: calc(100% - 60px);
+    height: 100%;
+}
+
+.info-text {
+    max-width: calc(100% - 50px);
+    padding: 10px;
+}
+
+.short-message {
+    color: var(--text);
+}
+
+.info-hour { 
+    width: 50px;
+    padding-top: 5px;
+    color: var(--icon);
+}
+
+/* MEDIA QUERY LEFT SECTION (LAPTOP) */
+@media screen and (min-width: 540px) {
+    .container-left {
+        width: 80px;
+        display: block;
+    }
+}
+
+/* MEDIA QUERY LEFT SECTION (DESKTOP) */
+@media screen and (min-width: 991px) {
+    .container-left {
+        width: 35%;
+    }
+
+    .profile-nav {
+        display: flex;
+    }
+
+    .notification {
+        display: flex;
+    }
+
+    .search {
+        display: flex;
+    }
+
+    .info-contact {
+        display: flex;
+    }
+
+    .contact-list {
+        height: calc(90vh - 230px);
+    }
+}
+
+
+
+/* RIGHT SECTION */
+.container-right {
+    height: 100vh;
+    width: 100%;
+}
+
+/* HEADER */
+.container-right header {
+    background-color: var(--b-write);
+}
+
+.info-texting-contact {
+    height: 60px;
+    width: calc(100% - 60px);
+    padding: 10px;
+}
+
+.last-access {
+    color: var(--last-access);
+}
+
+.contact-nav {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 120px;
+    padding-right: 20px;
+}
+
+.contact-nav button {
+    color: var(--icon);
+    text-decoration: none;
+    scale: 1.7;
+    text-decoration: none;
+    margin: 15px;
+    border: transparent;
+}
+
+.contact-nav button:active {
+    opacity: .5;
+}
+
+/* MAIN */
+.container-chat {
+    background-image: url(../img/mine.jpg);
+    height: calc(100vh - 160px);
+}
+
+/* MESSAGE PADDING */
+.message-space {
+    padding: 30px;
+}
+
+/* MESSAGGE PROPERTY */
+.container-message {
+    display: inline-block;
+    border-radius: 10px;
+    max-width: 80%;
+    padding: 20px 20px 10px 20px;
+}
+
+.my-message {
+    text-align: right;
+}
+
+.my-message > div {
+    background-color: var(--my-message);
+}
+
+.response > div {
+    background-color: white;
+}
+
+.content-message {
+    max-width: calc(100% - 20px);
+}
+
+.content-message p {
+    text-align: left;
+}
+
+/* MENU */
+.message-menu { 
+    position: relative;
+    display: inline-block;
+    width: 20px;
+}
+
+.message-menu i {
+    color: var(--icon);
+}
+
+.message-menu:hover .menu {
+    display: block;
+}
+
+.menu{
+    display: none;
+    position: absolute;
+    left: -50px;
+    width: 110px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 2px #000000;
+    box-shadow: 0 0 2px #000000;
+}
+
+.menu div {
+    font-size: .7rem;
+    text-align: center;
+    padding: 5px 0;
+}
+
+.canc:hover {
+    opacity: .4;
+}
+
+.info:hover {
+    opacity: .4;
+}
+
+.hour {
+    max-width: 100%;
+    text-align: right;
+    color: var(--icon);
+}
+
+/* FOOTER */
+.footer-color{
+    background-color: var(--b-write);
+}
+
+.write {
+    height: 50px;
+    width: 90%;
+    margin: auto;
+    border: 0;
+    border-radius: 5px;
+    padding: 0 20px;
+}
+
+.write-tool {
+    display: none;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.write-tool button {
+    scale: 2;
+    color: var(--icon);
+    text-decoration: none;
+    border: transparent;
+    border-radius: 50%;
+}
+
+.inner-circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* VOCAL BUTTON ANIMATION */
+.vocal button{
+    transition: 1s linear;
+}
+
+.vocal button:active {
+    color: #07628d;
+}
+
+.inner-circle:active {
+    animation: vocal-anim 3s ease-in-out infinite;
+}
+
+@keyframes vocal-anim {
+    0% {
+        width: 30px;
+        aspect-ratio: 1 / 1;
+        border: 3px solid rgb(0, 68, 255);
+        border-radius: 50%;
+    }
+    50% {
+        width: 50px;
+        aspect-ratio: 1 / 1;
+        border: 3px solid rgb(54, 191, 255);
+        border-radius: 50%;
+    }
+    100% {
+        width: 30px;
+        aspect-ratio: 1 / 1;
+        border: 3px solid rgb(0, 68, 255);
+        border-radius: 50%;
+    }
+}
+
+
+/* MEDIA QUERY SECTION RIGHT (TABLET) */
+@media screen and (min-width: 540px) {
+    .container-right {
+        width: calc(100% - 80px);
+    }
+
+    .info-texting-contact {
+        width: calc(100% - 180px);
+    }
+
+    .contact-nav {
+        display: flex;
+    }
+
+    .write {
+        width: calc(100% - 120px);
+    }
+
+    .write-tool {
+        display: flex;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .container-right {
+        width: 65%;
+        height: 90vh;
+    }
+
+    .container-chat {
+        height: calc(90vh - 160px);
+    }
+}
