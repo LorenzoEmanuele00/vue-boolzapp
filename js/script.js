@@ -164,12 +164,15 @@ createApp({
                         },
                     ],
                 },
-            ]
+            ],
             // End Contact Array
+            activeIndex: 0,
         }
     },
     methods: {
-
+        changeChat: function(currIndex) {
+            this.activeIndex = currIndex;
+        }
     }
 }).mount("#app");
 

@@ -21,12 +21,12 @@
                     <!-- LEFT HEADER -->
                     <header class="left">
                         <!-- USER -->
-                        <div class="user container flex">
+                        <div class="color-beje container flex">
                             <div class="profile-pic"><img src="img/avatar_io.jpg" alt=""></div>
                             <div class="profile-nav">
-                                <button class="fa-solid fa-circle-notch"></button>
-                                <button class="fa-solid fa-message"></button>
-                                <button class="fa-solid fa-ellipsis-vertical"></button>
+                                <button class="fa-solid fa-circle-notch color-beje"></button>
+                                <button class="fa-solid fa-message color-beje"></button>
+                                <button class="fa-solid fa-ellipsis-vertical color-beje"></button>
                             </div>
                         </div>
                         <!-- /USER -->
@@ -56,7 +56,7 @@
                         <!-- CONTACT LIST -->
                         <div class="contact-list list-scroll">
                             <ul>
-                                <li class="flex container" v-for="(elem) in contacts">
+                                <li class="flex container" v-for="(elem, index) in contacts" :key="index" @click="changeChat(index)">
                                     <div class="profile-pic"><img :src="`img/avatar${elem.avatar}.jpg`" alt="profile picture"></div>
                                     <div class="info-contact">
                                         <div class="info-text">
@@ -85,9 +85,9 @@
                             <p class="last-access">Ultimo accesso oggi alle 13:20</p>
                         </div>
                         <div class="contact-nav">
-                            <button class="fa-solid fa-magnifying-glass"></button>
-                            <button class="fa-solid fa-paperclip"></button>
-                            <button class="fa-solid fa-ellipsis-vertical"></button>
+                            <button class="fa-solid fa-magnifying-glass color-beje"></button>
+                            <button class="fa-solid fa-paperclip color-beje"></button>
+                            <button class="fa-solid fa-ellipsis-vertical color-beje"></button>
                         </div>
                     </header>
                     <!-- /RIGHT HEADER -->
@@ -95,11 +95,11 @@
                     <!-- RIGHT MAIN -->
                     <main class="container-chat list-scroll">
                         <ul> 
-                            <li class="my-message message-space">
+                            <li class="message-space" v-for="(elem) in contacts[activeIndex].messages" :class="elem.status ==='sent' ? 'my-message' : 'response'">
                                 <div class="container-message">
                                     <div class="flex">
                                         <div class="content-message">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos delectus eligendi beatae assumenda nostrum nemo atque voluptatum omnis autem doloribus.</p>
+                                            <p>{{elem.message}}</p>
                                         </div>
                                         <div class="message-menu">
                                             <i class="fa-solid fa-angle-down"></i>
@@ -109,58 +109,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="response message-space">
-                                <div class="container-message">
-                                    <div class="flex">
-                                        <div class="content-message">
-                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium tempora voluptatem soluta ex aspernatur voluptate. Excepturi, vitae qui tempora temporibus a, vero eum reprehenderit illum, doloremque reiciendis eaque natus nihil.</p>
-                                        </div>
-                                        <div class="message-menu">
-                                            <i class="fa-solid fa-angle-down"></i>
-                                            <div class="menu">
-                                                <div class="info">Info messaggio</div>
-                                                <div class="canc">Cancella messaggio</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="my-message message-space">
-                                <div class="container-message">
-                                    <div class="flex">
-                                        <div class="content-message">
-                                            <p>Lorem?</p>
-                                        </div>
-                                        <div class="message-menu">
-                                            <i class="fa-solid fa-angle-down"></i>
-                                            <div class="menu">
-                                                <div class="info">Info messaggio</div>
-                                                <div class="canc">Cancella messaggio</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="response message-space">
-                                <div class="container-message">
-                                    <div class="flex">
-                                        <div class="content-message">
-                                            <p>Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, minus? Commodi a ea quo consequatur! Accusamus quis eligendi saepe inventore ut! Est numquam modi, delectus laborum blanditiis iusto distinctio ipsam. ipsum dolor sit amet consectetur, adipisicing elit. Accusantium tempora voluptatem soluta ex aspernatur voluptate. Excepturi, vitae qui tempora temporibus a, vero eum reprehenderit illum, doloremque reiciendis eaque natus nihil.</p>
-                                        </div>
-                                        <div class="message-menu">
-                                            <i class="fa-solid fa-angle-down"></i>
-                                            <div class="menu">
-                                                <div class="info">Info messaggio</div>
-                                                <div class="canc">Cancella messaggio</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="hour">13:20</div>
+                                    <div class="hour">{{elem.date}}</div>
                                 </div>
                             </li>
                         </ul>
