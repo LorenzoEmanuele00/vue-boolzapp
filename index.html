@@ -5,298 +5,183 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <title>Boolzap</title>
 </head>
 
 <body>
-    
-    <!-- WRAPPER -->
-    <div class="up-wrapper flex-wrapper">
-        <div class="wrapper">
 
-            <!-- SECTION LEFT -->
-            <section class="container-left">
-                <!-- LEFT HEADER -->
-                <header class="left">
-                    <!-- USER -->
-                    <div class="user container flex">
-                        <div class="profile-pic"><img src="img/avatar_io.jpg" alt=""></div>
-                        <div class="profile-nav">
-                            <button class="fa-solid fa-circle-notch"></button>
-                            <button class="fa-solid fa-message"></button>
+    <div id="app">
+        <!-- WRAPPER -->
+        <div class="up-wrapper flex-wrapper">
+            <div class="wrapper">
+
+                <!-- SECTION LEFT -->
+                <section class="container-left">
+                    <!-- LEFT HEADER -->
+                    <header class="left">
+                        <!-- USER -->
+                        <div class="user container flex">
+                            <div class="profile-pic"><img src="img/avatar_io.jpg" alt=""></div>
+                            <div class="profile-nav">
+                                <button class="fa-solid fa-circle-notch"></button>
+                                <button class="fa-solid fa-message"></button>
+                                <button class="fa-solid fa-ellipsis-vertical"></button>
+                            </div>
+                        </div>
+                        <!-- /USER -->
+                    </header>
+                    <!-- /LEFT HEADER -->
+
+                    <!-- LEFT MAIN -->
+                    <main>
+                        <!-- NOTIFICATION -->
+                        <div class="notification container-big">
+                            <div class="silence-pic flex"><i class="fa-solid fa-bell-slash"></i></div>
+                            <div class="news-container">
+                                <h3>Ricevi notifiche dei nuovi messaggi</h3>
+                                <a href="">Attiva notifiche desktp</a>
+                            </div>
+                        </div>
+                        <!-- /NOTIFICATION -->
+
+                        <!-- SEARCH -->
+                        <div class="search container-small">
+                            <div class="search-icon flex"><a href="" class="fa-solid fa-magnifying-glass"></a></div>
+                            <label for="search-box">Cerca o inizia una nuova chat</label>
+                            <input id="search-box" class="searcher" type="text" placeholder="Cerca o inizia una nuova chat">
+                        </div>
+                        <!-- /SEARCH -->
+
+                        <!-- CONTACT LIST -->
+                        <div class="contact-list list-scroll">
+                            <ul>
+                                <li class="flex container" v-for="(elem) in contacts">
+                                    <div class="profile-pic"><img :src="`img/avatar${elem.avatar}.jpg`" alt="profile picture"></div>
+                                    <div class="info-contact">
+                                        <div class="info-text">
+                                            <p class="name">{{elem.name}}</p>
+                                            <p class="short-message">Lorem ipsum dolor</p>
+                                        </div>
+                                        <div class="info-hour">13:20</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /CONTACT LIST -->
+                    </main>
+                    <!-- /LEFT MAIN -->
+                </section>
+                <!-- /SECTION LEFT -->
+
+
+                <!-- SECTION RIGHT -->
+                <section class="container-right">
+                    <!-- RIGHT HEADER -->
+                    <header class="container flex">
+                        <div class="profile-pic"><img src="img/avatar_1.jpg" alt=""></div>
+                        <div class="info-texting-contact">
+                            <p class="texting-contact-name">Michele</p>
+                            <p class="last-access">Ultimo accesso oggi alle 13:20</p>
+                        </div>
+                        <div class="contact-nav">
+                            <button class="fa-solid fa-magnifying-glass"></button>
+                            <button class="fa-solid fa-paperclip"></button>
                             <button class="fa-solid fa-ellipsis-vertical"></button>
                         </div>
-                    </div>
-                    <!-- /USER -->
-                </header>
-                <!-- /LEFT HEADER -->
+                    </header>
+                    <!-- /RIGHT HEADER -->
 
-                <!-- LEFT MAIN -->
-                <main>
-                    <!-- NOTIFICATION -->
-                    <div class="notification container-big">
-                        <div class="silence-pic flex"><i class="fa-solid fa-bell-slash"></i></div>
-                        <div class="news-container">
-                            <h3>Ricevi notifiche dei nuovi messaggi</h3>
-                            <a href="">Attiva notifiche desktp</a>
-                        </div>
-                    </div>
-                    <!-- /NOTIFICATION -->
-
-                    <!-- SEARCH -->
-                    <div class="search container-small">
-                        <div class="search-icon flex"><a href="" class="fa-solid fa-magnifying-glass"></a></div>
-                        <label for="search-box">Cerca o inizia una nuova chat</label>
-                        <input id="search-box" class="searcher" type="text" placeholder="Cerca o inizia una nuova chat">
-                    </div>
-                    <!-- /SEARCH -->
-
-                    <!-- CONTACT LIST -->
-                    <div class="contact-list list-scroll">
-                        <ul>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_1.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
+                    <!-- RIGHT MAIN -->
+                    <main class="container-chat list-scroll">
+                        <ul> 
+                            <li class="my-message message-space">
+                                <div class="container-message">
+                                    <div class="flex">
+                                        <div class="content-message">
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos delectus eligendi beatae assumenda nostrum nemo atque voluptatum omnis autem doloribus.</p>
+                                        </div>
+                                        <div class="message-menu">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                            <div class="menu">
+                                                <div class="info">Info messaggio</div>
+                                                <div class="canc">Cancella messaggio</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="info-hour">13:20</div>
+                                    <div class="hour">13:20</div>
                                 </div>
                             </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_2.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Fabio</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
+                            <li class="response message-space">
+                                <div class="container-message">
+                                    <div class="flex">
+                                        <div class="content-message">
+                                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium tempora voluptatem soluta ex aspernatur voluptate. Excepturi, vitae qui tempora temporibus a, vero eum reprehenderit illum, doloremque reiciendis eaque natus nihil.</p>
+                                        </div>
+                                        <div class="message-menu">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                            <div class="menu">
+                                                <div class="info">Info messaggio</div>
+                                                <div class="canc">Cancella messaggio</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="info-hour">1:57</div>
+                                    <div class="hour">13:20</div>
                                 </div>
                             </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_3.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Samuele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
+                            <li class="my-message message-space">
+                                <div class="container-message">
+                                    <div class="flex">
+                                        <div class="content-message">
+                                            <p>Lorem?</p>
+                                        </div>
+                                        <div class="message-menu">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                            <div class="menu">
+                                                <div class="info">Info messaggio</div>
+                                                <div class="canc">Cancella messaggio</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="info-hour">16:27</div>
+                                    <div class="hour">13:20</div>
                                 </div>
                             </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_4.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Alessandro B.</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
+                            <li class="response message-space">
+                                <div class="container-message">
+                                    <div class="flex">
+                                        <div class="content-message">
+                                            <p>Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, minus? Commodi a ea quo consequatur! Accusamus quis eligendi saepe inventore ut! Est numquam modi, delectus laborum blanditiis iusto distinctio ipsam. ipsum dolor sit amet consectetur, adipisicing elit. Accusantium tempora voluptatem soluta ex aspernatur voluptate. Excepturi, vitae qui tempora temporibus a, vero eum reprehenderit illum, doloremque reiciendis eaque natus nihil.</p>
+                                        </div>
+                                        <div class="message-menu">
+                                            <i class="fa-solid fa-angle-down"></i>
+                                            <div class="menu">
+                                                <div class="info">Info messaggio</div>
+                                                <div class="canc">Cancella messaggio</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_5.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Alessandro L.</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_6.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Claudia</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_7.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Federico</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_8.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_1.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_2.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_3.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_4.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
-                                </div>
-                            </li>
-                            <li class="flex container">
-                                <div class="profile-pic"><img src="img/avatar_5.jpg" alt=""></div>
-                                <div class="info-contact">
-                                    <div class="info-text">
-                                        <p class="name">Michele</p>
-                                        <p class="short-message">Lorem ipsum dolor</p>
-                                    </div>
-                                    <div class="info-hour">13:20</div>
+                                    <div class="hour">13:20</div>
                                 </div>
                             </li>
                         </ul>
-                    </div>
-                    <!-- /CONTACT LIST -->
-                </main>
-                <!-- /LEFT MAIN -->
-            </section>
-            <!-- /SECTION LEFT -->
+                    </main>
+                    <!-- /RIGHT MAIN -->
 
+                    <!-- RIGHT FOOTER -->
+                    <footer class="container footer-color flex">
+                        <div class="write-tool"><button href="" class="fa-regular fa-face-smile"></button></div>
+                        <input class="write" type="text" placeholder="Scrivi un messagio">
+                        <div class="write-tool vocal"><div class="inner-circle"><button href="" class="fa-solid fa-microphone"></button></div></div>
+                    </footer>
+                    <!-- /RIGHT FOOTER -->
+                </section>
+                <!-- /SECTION RIGHT -->
 
-            <!-- SECTION RIGHT -->
-            <section class="container-right">
-                <!-- RIGHT HEADER -->
-                <header class="container flex">
-                    <div class="profile-pic"><img src="img/avatar_1.jpg" alt=""></div>
-                    <div class="info-texting-contact">
-                        <p class="texting-contact-name">Michele</p>
-                        <p class="last-access">Ultimo accesso oggi alle 13:20</p>
-                    </div>
-                    <div class="contact-nav">
-                        <button class="fa-solid fa-magnifying-glass"></button>
-                        <button class="fa-solid fa-paperclip"></button>
-                        <button class="fa-solid fa-ellipsis-vertical"></button>
-                    </div>
-                </header>
-                <!-- /RIGHT HEADER -->
-
-                <!-- RIGHT MAIN -->
-                <main class="container-chat list-scroll">
-                    <ul> 
-                        <li class="my-message message-space">
-                            <div class="container-message">
-                                <div class="flex">
-                                    <div class="content-message">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos delectus eligendi beatae assumenda nostrum nemo atque voluptatum omnis autem doloribus.</p>
-                                    </div>
-                                    <div class="message-menu">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                        <div class="menu">
-                                            <div class="info">Info messaggio</div>
-                                            <div class="canc">Cancella messaggio</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hour">13:20</div>
-                            </div>
-                        </li>
-                        <li class="response message-space">
-                            <div class="container-message">
-                                <div class="flex">
-                                    <div class="content-message">
-                                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusantium tempora voluptatem soluta ex aspernatur voluptate. Excepturi, vitae qui tempora temporibus a, vero eum reprehenderit illum, doloremque reiciendis eaque natus nihil.</p>
-                                    </div>
-                                    <div class="message-menu">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                        <div class="menu">
-                                            <div class="info">Info messaggio</div>
-                                            <div class="canc">Cancella messaggio</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hour">13:20</div>
-                            </div>
-                        </li>
-                        <li class="my-message message-space">
-                            <div class="container-message">
-                                <div class="flex">
-                                    <div class="content-message">
-                                        <p>Lorem?</p>
-                                    </div>
-                                    <div class="message-menu">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                        <div class="menu">
-                                            <div class="info">Info messaggio</div>
-                                            <div class="canc">Cancella messaggio</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hour">13:20</div>
-                            </div>
-                        </li>
-                        <li class="response message-space">
-                            <div class="container-message">
-                                <div class="flex">
-                                    <div class="content-message">
-                                        <p>Lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, minus? Commodi a ea quo consequatur! Accusamus quis eligendi saepe inventore ut! Est numquam modi, delectus laborum blanditiis iusto distinctio ipsam. ipsum dolor sit amet consectetur, adipisicing elit. Accusantium tempora voluptatem soluta ex aspernatur voluptate. Excepturi, vitae qui tempora temporibus a, vero eum reprehenderit illum, doloremque reiciendis eaque natus nihil.</p>
-                                    </div>
-                                    <div class="message-menu">
-                                        <i class="fa-solid fa-angle-down"></i>
-                                        <div class="menu">
-                                            <div class="info">Info messaggio</div>
-                                            <div class="canc">Cancella messaggio</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="hour">13:20</div>
-                            </div>
-                        </li>
-                    </ul>
-                </main>
-                <!-- /RIGHT MAIN -->
-
-                <!-- RIGHT FOOTER -->
-                <footer class="container footer-color flex">
-                    <div class="write-tool"><button href="" class="fa-regular fa-face-smile"></button></div>
-                    <input class="write" type="text" placeholder="Scrivi un messagio">
-                    <div class="write-tool vocal"><div class="inner-circle"><button href="" class="fa-solid fa-microphone"></button></div></div>
-                </footer>
-                <!-- /RIGHT FOOTER -->
-            </section>
-            <!-- /SECTION RIGHT -->
-
+            </div>
         </div>
+        <!-- /WRAPPER -->
     </div>
-    <!-- /WRAPPER -->
+
+    <script src="js/script.js"></script>
 </body>
 </html>
