@@ -182,6 +182,7 @@ createApp({
         },
         sendMessage: function() {
             this.newMessage.status = "sent";
+            this.newMessage.date = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
             if(this.newMessage.message.trim() !== "") {
                 this.contacts[this.activeIndex].messages.push({...this.newMessage});
                 this.responseIndex = this.activeIndex;
@@ -192,6 +193,7 @@ createApp({
         sendResponse: function() {
             this.newMessage.status = "received";
             this.newMessage.message = "Ok";
+            this.newMessage.date = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
             this.contacts[this.responseIndex].messages.push({...this.newMessage});
             this.clearNew();
         },
@@ -200,10 +202,20 @@ createApp({
             this.newMessage.status = "";
             this.newMessage.date = "";
         },
+        searchControl: function() {      
+            if(this.searchLetter === "") {
+                for(let i = 0; i < this.searchLetter.length; i++){
+                    this.contacts[i].visible = true
+                }
+            }
+            for(let i = 0; i < this.contacts.length; i++){
+                this.contacts[i].name.toLowerCase().includes(this.searchLetter.toLowerCase()) ? this.contacts[i].visible = true : this.contacts[i].visible = false
+            }
+        }
     }
 }).mount("#app");
 
-
+const dt = luxon.DateTime;
 
 
 

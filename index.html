@@ -49,14 +49,14 @@
                         <div class="search container-small">
                             <div class="search-icon flex"><a href="" class="fa-solid fa-magnifying-glass"></a></div>
                             <label for="search-box">Cerca o inizia una nuova chat</label>
-                            <input id="search-box" class="searcher" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchLetter">
+                            <input id="search-box" class="searcher" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchLetter" @keyup="searchControl()">
                         </div>
                         <!-- /SEARCH -->
 
                         <!-- CONTACT LIST -->
                         <div class="contact-list list-scroll">
                             <ul>
-                                <li class="flex container" v-for="(elem, index) in contacts" :key="index" @click="changeChat(index)">
+                                <li class="flex container" v-for="(elem, index) in contacts" :key="index" @click="changeChat(index)" v-show="elem.visible">
                                     <div class="profile-pic"><img :src="`img/avatar${elem.avatar}.jpg`" alt="profile picture"></div>
                                     <div class="info-contact">
                                         <div class="info-text">
@@ -82,7 +82,7 @@
                         <div class="profile-pic"><img :src="`img/avatar${contacts[activeIndex].avatar}.jpg`" alt=""></div>
                         <div class="info-texting-contact">
                             <p class="texting-contact-name">{{contacts[activeIndex].name}}</p>
-                            <p class="last-access">Ultimo accesso oggi alle 13:20</p>
+                            <p class="last-access">Ultimo accesso</p>
                         </div>
                         <div class="contact-nav">
                             <button class="fa-solid fa-magnifying-glass color-beje"></button>
@@ -132,6 +132,7 @@
         <!-- /WRAPPER -->
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
