@@ -435,7 +435,7 @@ li {
 
 .write {
     height: 50px;
-    width: 90%;
+    width: calc(90% - 50px );
     margin: auto;
     border: 0;
     border-radius: 5px;
@@ -444,6 +444,11 @@ li {
 
 .write-tool {
     display: none;
+}
+
+.write-tool,
+.send-button {
+    display: flex;
     height: 50px;
     width: 50px;
     margin: auto;
@@ -451,6 +456,7 @@ li {
     align-items: center;
 }
 
+.send-button button,
 .write-tool button {
     scale: 2;
     color: var(--icon);
@@ -466,10 +472,7 @@ li {
 }
 
 /* VOCAL BUTTON ANIMATION */
-.vocal button{
-    transition: 1s linear;
-}
-
+.send-button button:active,
 .vocal button:active {
     color: #07628d;
 }
@@ -515,7 +518,7 @@ li {
     }
 
     .write {
-        width: calc(100% - 120px);
+        width: calc(100% - 170px);
     }
 
     .write-tool {

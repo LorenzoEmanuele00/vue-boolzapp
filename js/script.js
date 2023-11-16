@@ -167,12 +167,39 @@ createApp({
             ],
             // End Contact Array
             activeIndex: 0,
+            responseIndex: 0,
+            timer: null,
+            newMessage: {
+                date: '',
+                message: '',
+                status: ''
+            }
         }
     },
     methods: {
         changeChat: function(currIndex) {
             this.activeIndex = currIndex;
-        }
+        },
+        sendMessage: function() {
+            this.newMessage.status = "sent";
+            if(this.newMessage.message.trim() !== "") {
+                this.contacts[this.activeIndex].messages.push({...this.newMessage});
+                this.responseIndex = this.activeIndex;
+                setTimeout(() => this.sendResponse(), 2000);
+            }
+            this.clearNew();
+        },
+        sendResponse: function() {
+            this.newMessage.status = "received";
+            this.newMessage.message = "Ok";
+            this.contacts[this.responseIndex].messages.push({...this.newMessage});
+            this.clearNew();
+        },
+        clearNew: function() {
+            this.newMessage.message = "";
+            this.newMessage.status = "";
+            this.newMessage.date = "";
+        },
     }
 }).mount("#app");
 

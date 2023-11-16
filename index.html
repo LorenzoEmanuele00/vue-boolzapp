@@ -118,9 +118,10 @@
 
                     <!-- RIGHT FOOTER -->
                     <footer class="container footer-color flex">
-                        <div class="write-tool"><button href="" class="fa-regular fa-face-smile"></button></div>
-                        <input class="write" type="text" placeholder="Scrivi un messagio">
-                        <div class="write-tool vocal"><div class="inner-circle"><button href="" class="fa-solid fa-microphone"></button></div></div>
+                        <div class="write-tool"><button class="fa-regular fa-face-smile"></button></div>
+                        <input class="write" type="text" placeholder="Scrivi un messagio" v-model="newMessage.message" @keyup.enter="sendMessage">
+                        <div class="send-button"><button class="fa-solid fa-paper-plane" @click="sendMessage"></button></div>
+                        <div class="write-tool vocal"><div class="inner-circle"><button class="fa-solid fa-microphone"></button></div></div>
                     </footer>
                     <!-- /RIGHT FOOTER -->
                 </section>
