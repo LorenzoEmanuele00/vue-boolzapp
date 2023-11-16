@@ -63,7 +63,7 @@
                                             <p class="name">{{elem.name}}</p>
                                             <p class="short-message">Lorem ipsum dolor</p>
                                         </div>
-                                        <div class="info-hour">13:20</div>
+                                        <div class="info-hour">{{elem.time}}</div>
                                     </div>
                                 </li>
                             </ul>
@@ -82,7 +82,7 @@
                         <div class="profile-pic"><img :src="`img/avatar${contacts[activeIndex].avatar}.jpg`" alt=""></div>
                         <div class="info-texting-contact">
                             <p class="texting-contact-name">{{contacts[activeIndex].name}}</p>
-                            <p class="last-access">Ultimo accesso</p>
+                            <p class="last-access">{{contacts[activeIndex].time}}</p>
                         </div>
                         <div class="contact-nav">
                             <button class="fa-solid fa-magnifying-glass color-beje"></button>
@@ -95,7 +95,7 @@
                     <!-- RIGHT MAIN -->
                     <main class="container-chat list-scroll">
                         <ul> 
-                            <li class="message-space" v-for="(elem) in contacts[activeIndex].messages" :class="elem.status ==='sent' ? 'my-message' : 'response'">
+                            <li class="message-space" v-for="(elem, index) in contacts[activeIndex].messages" :key="index" :class="elem.status ==='sent' ? 'my-message' : 'response'">
                                 <div class="container-message">
                                     <div class="flex">
                                         <div class="content-message">
@@ -105,7 +105,7 @@
                                             <i class="fa-solid fa-angle-down"></i>
                                             <div class="menu">
                                                 <div class="info">Info messaggio</div>
-                                                <div class="canc">Cancella messaggio</div>
+                                                <div class="canc" @click="cancelMessage(index)">Cancella messaggio</div>
                                             </div>
                                         </div>
                                     </div>

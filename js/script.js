@@ -8,6 +8,7 @@ createApp({
                     name: 'Michele',
                     avatar: '_1',
                     visible: true,
+                    time: '10/01/2020 16:15:22',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -30,6 +31,7 @@ createApp({
                     name: 'Fabio',
                     avatar: '_2',
                     visible: true,
+                    time: '20/03/2020 16:30:55',
                     messages: [
                         {
                             date: '20/03/2020 16:30:00',
@@ -52,6 +54,7 @@ createApp({
                     name: 'Samuele',
                     avatar: '_3',
                     visible: true,
+                    time: '28/03/2020 16:15:22',
                     messages: [
                         {
                             date: '28/03/2020 10:10:40',
@@ -74,6 +77,7 @@ createApp({
                     name: 'Alessandro B.',
                     avatar: '_4',
                     visible: true,
+                    time: '10/01/2020 15:50:00',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -91,6 +95,7 @@ createApp({
                     name: 'Alessandro L.',
                     avatar: '_5',
                     visible: true,
+                    time: '10/01/2020 15:50:00',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -108,6 +113,7 @@ createApp({
                     name: 'Claudia',
                     avatar: '_6',
                     visible: true,
+                    time: '10/01/2020 15:50:00',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -129,6 +135,7 @@ createApp({
                     name: 'Federico',
                     avatar: '_7',
                     visible: true,
+                    time: '10/01/2020 15:50:00',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -146,6 +153,7 @@ createApp({
                     name: 'Davide',
                     avatar: '_8',
                     visible: true,
+                    time: '10/01/2020 15:51:00',
                     messages: [
                         {
                             date: '10/01/2020 15:30:55',
@@ -195,6 +203,7 @@ createApp({
             this.newMessage.message = "Ok";
             this.newMessage.date = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS);
             this.contacts[this.responseIndex].messages.push({...this.newMessage});
+            this.updateLastAccess(this.newMessage.date);
             this.clearNew();
         },
         clearNew: function() {
@@ -211,7 +220,13 @@ createApp({
             for(let i = 0; i < this.contacts.length; i++){
                 this.contacts[i].name.toLowerCase().includes(this.searchLetter.toLowerCase()) ? this.contacts[i].visible = true : this.contacts[i].visible = false
             }
-        }
+        },
+        cancelMessage: function(ind) {
+            this.contacts[this.activeIndex].messages.splice(ind, 1)
+        },
+        updateLastAccess: function(newTime) {
+            this.contacts[this.responseIndex].time = newTime;
+        },
     }
 }).mount("#app");
 
