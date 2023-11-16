@@ -49,7 +49,7 @@
                         <div class="search container-small">
                             <div class="search-icon flex"><a href="" class="fa-solid fa-magnifying-glass"></a></div>
                             <label for="search-box">Cerca o inizia una nuova chat</label>
-                            <input id="search-box" class="searcher" type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input id="search-box" class="searcher" type="text" placeholder="Cerca o inizia una nuova chat" v-model="searchLetter">
                         </div>
                         <!-- /SEARCH -->
 
@@ -79,9 +79,9 @@
                 <section class="container-right">
                     <!-- RIGHT HEADER -->
                     <header class="container flex">
-                        <div class="profile-pic"><img src="img/avatar_1.jpg" alt=""></div>
+                        <div class="profile-pic"><img :src="`img/avatar${contacts[activeIndex].avatar}.jpg`" alt=""></div>
                         <div class="info-texting-contact">
-                            <p class="texting-contact-name">Michele</p>
+                            <p class="texting-contact-name">{{contacts[activeIndex].name}}</p>
                             <p class="last-access">Ultimo accesso oggi alle 13:20</p>
                         </div>
                         <div class="contact-nav">

@@ -168,7 +168,7 @@ createApp({
             // End Contact Array
             activeIndex: 0,
             responseIndex: 0,
-            timer: null,
+            searchLetter: "",
             newMessage: {
                 date: '',
                 message: '',
