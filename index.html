@@ -61,7 +61,7 @@
                                     <div class="info-contact">
                                         <div class="info-text">
                                             <p class="name">{{elem.name}}</p>
-                                            <p class="short-message">Lorem ipsum dolor</p>
+                                            <p class="short-message">{{elem.preview}}</p>
                                         </div>
                                         <div class="info-hour">{{elem.time}}</div>
                                     </div>
@@ -103,13 +103,16 @@
                                         </div>
                                         <div class="message-menu">
                                             <i class="fa-solid fa-angle-down"></i>
-                                            <div class="menu">
-                                                <div class="info">Info messaggio</div>
+                                            <div class="menu" @mouseleave="hideInfo">
+                                                <div>
+                                                    <p class="info" :class="!flagInfo ? '' : 'd-none'" @click="showInfo">Info messaggio</p>
+                                                    <p :class="flagInfo ? '' : 'd-none'" @click="showInfo">{{elem.date}}</p>
+                                                </div>
                                                 <div class="canc" @click="cancelMessage(index)">Cancella messaggio</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="hour">{{elem.date}}</div>
+                                    <div class="hour">{{elem.hour}}</div>
                                 </div>
                             </li>
                         </ul>

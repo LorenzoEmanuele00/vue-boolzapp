@@ -422,6 +422,10 @@ li {
     opacity: .4;
 }
 
+.d-none {
+    display: none;
+}
+
 .hour {
     max-width: 100%;
     text-align: right;
