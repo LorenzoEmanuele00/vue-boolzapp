@@ -93,29 +93,31 @@
                     <!-- /RIGHT HEADER -->
 
                     <!-- RIGHT MAIN -->
-                    <main class="container-chat list-scroll">
-                        <ul> 
-                            <li class="message-space" v-for="(elem, index) in contacts[activeIndex].messages" :key="index" :class="elem.status ==='sent' ? 'my-message' : 'response'">
-                                <div class="container-message">
-                                    <div class="flex">
-                                        <div class="content-message">
-                                            <p>{{elem.message}}</p>
-                                        </div>
-                                        <div class="message-menu">
-                                            <i class="fa-solid fa-angle-down"></i>
-                                            <div class="menu" @mouseleave="hideInfo">
-                                                <div>
-                                                    <p class="info" :class="!flagInfo ? '' : 'd-none'" @click="showInfo">Info messaggio</p>
-                                                    <p :class="flagInfo ? '' : 'd-none'" @click="showInfo">{{elem.date}}</p>
+                    <main class="container-chat always-down list-scroll">
+                        <div>
+                            <ul> 
+                                <li class="message-space" v-for="(elem, index) in contacts[activeIndex].messages" :key="index" :class="elem.status ==='sent' ? 'my-message' : 'response'">
+                                    <div class="container-message">
+                                        <div class="flex">
+                                            <div class="content-message">
+                                                <p>{{elem.message}}</p>
+                                            </div>
+                                            <div class="message-menu">
+                                                <i class="fa-solid fa-angle-down"></i>
+                                                <div class="menu" @mouseleave="hideInfo">
+                                                    <div>
+                                                        <p class="info" :class="!flagInfo ? '' : 'd-none'" @click="showInfo">Info messaggio</p>
+                                                        <p :class="flagInfo ? '' : 'd-none'" @click="showInfo">{{elem.date}}</p>
+                                                    </div>
+                                                    <div class="canc" @click="cancelMessage(index)">Cancella messaggio</div>
                                                 </div>
-                                                <div class="canc" @click="cancelMessage(index)">Cancella messaggio</div>
                                             </div>
                                         </div>
+                                        <div class="hour">{{elem.hour}}</div>
                                     </div>
-                                    <div class="hour">{{elem.hour}}</div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </main>
                     <!-- /RIGHT MAIN -->
 

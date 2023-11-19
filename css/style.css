@@ -52,6 +52,15 @@ img {
 
 .list-scroll {
     overflow-y: auto;
+    
+}
+
+.always-down {
+    height: 100px;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow-anchor: auto;
+    scroll-behavior: smooth;
 }
 
 .profile-pic {
@@ -352,6 +361,7 @@ li {
 /* MESSAGE PADDING */
 .message-space {
     padding: 10px 30px;
+    word-wrap: break-word;
 }
 
 /* MESSAGGE PROPERTY */

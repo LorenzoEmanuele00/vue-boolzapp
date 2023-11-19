@@ -224,6 +224,7 @@ createApp({
     methods: {
         changeChat: function(currIndex) {
             this.activeIndex = currIndex;
+            this.scrollToBottom();
         },
         sendMessage: function() {
             this.newMessage.status = "sent";
@@ -236,6 +237,7 @@ createApp({
                 setTimeout(() => this.sendResponse(), 2000);
             }
             this.clearNewMess();
+            this.scrollToBottom();
         },
         sendResponse: function() {
             this.newResponse.status = "received";
@@ -254,6 +256,7 @@ createApp({
             this.updateLastAccess();
             this.createPrev(this.newResponse.message);
             this.clearNewRes();
+            this.scrollToBottom();
         },
         clearNewMess: function() {
             this.newMessage.message = "";
@@ -276,7 +279,10 @@ createApp({
             }
         },
         cancelMessage: function(ind) {
-            this.contacts[this.activeIndex].messages.splice(ind, 1)
+            // this.contacts[this.activeIndex].messages.splice(ind, 1)
+            this.contacts[this.activeIndex].messages[ind].message === "Questo messaggio è stato eliminato!" ? this.contacts[this.activeIndex].messages.splice(ind, 1) : this.contacts[this.activeIndex].messages[ind].message = "Questo messaggio è stato eliminato!"
+            
+
         },
         updateLastAccess: function() {
             this.contacts[this.responseIndex].time = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT);
@@ -298,6 +304,9 @@ createApp({
         },
         hideInfo: function() {
             this.flagInfo ? this.flagInfo = !this.flagInfo : this.flagInfo = false;
+        },
+        scroll: function() {
+            //document.querySelector(".container-chat").scrollTo({ left: 0, top: (document.querySelector(".container-chat").scrollHeight), behavior: "smooth" });
         }
     }
 }).mount("#app");
