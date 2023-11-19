@@ -224,7 +224,6 @@ createApp({
     methods: {
         changeChat: function(currIndex) {
             this.activeIndex = currIndex;
-            this.scrollToBottom();
         },
         sendMessage: function() {
             this.newMessage.status = "sent";
@@ -237,7 +236,6 @@ createApp({
                 setTimeout(() => this.sendResponse(), 2000);
             }
             this.clearNewMess();
-            this.scrollToBottom();
         },
         sendResponse: function() {
             this.newResponse.status = "received";
@@ -256,7 +254,6 @@ createApp({
             this.updateLastAccess();
             this.createPrev(this.newResponse.message);
             this.clearNewRes();
-            this.scrollToBottom();
         },
         clearNewMess: function() {
             this.newMessage.message = "";
@@ -305,9 +302,6 @@ createApp({
         hideInfo: function() {
             this.flagInfo ? this.flagInfo = !this.flagInfo : this.flagInfo = false;
         },
-        scroll: function() {
-            //document.querySelector(".container-chat").scrollTo({ left: 0, top: (document.querySelector(".container-chat").scrollHeight), behavior: "smooth" });
-        }
     }
 }).mount("#app");
 const dt = luxon.DateTime;

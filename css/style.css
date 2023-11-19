@@ -60,7 +60,6 @@ img {
     display: flex;
     flex-direction: column-reverse;
     overflow-anchor: auto;
-    scroll-behavior: smooth;
 }
 
 .profile-pic {
