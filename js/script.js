@@ -1,4 +1,11 @@
 const{createApp} = Vue;
+
+const containerChat = document.querySelector('.container-chat');
+containerChat.scrollTo({
+    top: containerChat.scrollHeight,
+    behavior: 'smooth'
+});
+
 createApp({
     data() {
         return {
@@ -9,7 +16,6 @@ createApp({
                     avatar: '_1',
                     visible: true,
                     time: '10/01/2020, 16:15',
-                    preview: 'Tutto fatto!',
                     messages: [
                         {
                             date: '10/01/2020, 15:30',
@@ -36,7 +42,6 @@ createApp({
                     avatar: '_2',
                     visible: true,
                     time: '20/03/2020, 16:30',
-                    preview: 'Mi piacerebbe ma...',
                     messages: [
                         {
                             date: '20/03/2020, 16:30',
@@ -63,7 +68,6 @@ createApp({
                     avatar: '_3',
                     visible: true,
                     time: '28/03/2020, 16:15',
-                    preview: 'Ah scusa!',
                     messages: [
                         {
                             date: '28/03/2020, 10:10',
@@ -90,7 +94,6 @@ createApp({
                     avatar: '_4',
                     visible: true,
                     time: '10/01/2020, 15:50', 
-                    preview: 'Si, ma preferire...',
                     messages: [
                         {
                             date: '10/01/2020, 15:30',
@@ -111,7 +114,6 @@ createApp({
                     avatar: '_5',
                     visible: true,
                     time: '10/01/2020, 15:50',
-                    preview: 'Va bene, stasera...',
                     messages: [
                         {
                             date: '10/01/2020, 15:30',
@@ -132,7 +134,6 @@ createApp({
                     avatar: '_6',
                     visible: true,
                     time: '10/01/2020, 15:50',
-                    preview: 'Nessuna nuova, b...',
                     messages: [
                         {
                             date: '10/01/2020, 15:30',
@@ -158,7 +159,6 @@ createApp({
                     avatar: '_7',
                     visible: true,
                     time: '10/01/2020, 15:50',
-                    preview: 'Grazie per averm...',
                     messages: [
                         {
                             date: '10/01/2020, 15:30',
@@ -179,7 +179,6 @@ createApp({
                     avatar: '_8',
                     visible: true,
                     time: '10/01/2020, 15:51',
-                    preview: 'OK!!',
                     messages: [
                         {
                             date: '10/01/2020, 15:30',
@@ -207,6 +206,7 @@ createApp({
             responseIndex: 0,
             searchLetter: "",
             flagInfo: false,
+
             newMessage: {
                 date: '',
                 hour: '',
@@ -284,17 +284,13 @@ createApp({
         updateLastAccess: function() {
             this.contacts[this.responseIndex].time = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT);
         },
-        createPrev: function(text) {
-            let mess = [];
-            if (text.length <= 19) {
-                this.contacts[this.responseIndex].preview = text;
+        tranch(text) {
+            if (text.length >= 16) {
+                const short = text.substring(0, 16) + "...";
+                return short;
             } else {
-                for(i=0; i <= 19; i++) {
-                    i <= 16 ? mess[i] = text [i] : mess[i] = ".";
-                }
-                this.contacts[this.responseIndex].preview = mess.join("");
+                return text;
             }
-            
         },
         showInfo: function() {
             this.flagInfo = !this.flagInfo

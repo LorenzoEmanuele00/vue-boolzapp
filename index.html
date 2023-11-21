@@ -61,7 +61,7 @@
                                     <div class="info-contact">
                                         <div class="info-text">
                                             <p class="name">{{elem.name}}</p>
-                                            <p class="short-message">{{elem.preview}}</p>
+                                            <p v-if="elem.messages.length > 0" class="short-message">{{tranch(elem.messages[elem.messages.length - 1].message)}}</p>
                                         </div>
                                         <div class="info-hour">{{elem.time}}</div>
                                     </div>
