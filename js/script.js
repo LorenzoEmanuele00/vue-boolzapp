@@ -1,10 +1,10 @@
 const{createApp} = Vue;
 
-const containerChat = document.querySelector('.container-chat');
-containerChat.scrollTo({
-    top: containerChat.scrollHeight,
-    behavior: 'smooth'
-});
+// const containerChat = document.querySelector('.container-chat');
+// containerChat.scrollTo({
+//     top: containerChat.scrollHeight,
+//     behavior: 'smooth'
+// });
 
 createApp({
     data() {
