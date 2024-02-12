@@ -232,7 +232,7 @@ createApp({
             if(this.newMessage.message.trim() !== "") {
                 this.contacts[this.activeIndex].messages.push({...this.newMessage});
                 this.responseIndex = this.activeIndex;
-                this.createPrev(this.newMessage.message);
+                this.tranch(this.newMessage.message);
                 setTimeout(() => this.sendResponse(), 2000);
             }
             this.clearNewMess();
@@ -252,7 +252,7 @@ createApp({
             this.newResponse.date = dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT);
             this.contacts[this.responseIndex].messages.push({...this.newResponse});
             this.updateLastAccess();
-            this.createPrev(this.newResponse.message);
+            this.tranch(this.newResponse.message);
             this.clearNewRes();
         },
         clearNewMess: function() {
